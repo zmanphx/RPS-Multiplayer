@@ -249,11 +249,12 @@ database.ref("Players").on("value", function(snapshot) {
       $("#idHolder1").text(dispText);
     }
 
-    database.ref("Players/player2").update({ message1: "Play Again" });
-    database.ref("Players/player1").update({ message1: "Play Again" });
-    isClicked = false;
+    database.ref("Players/player2").update({ message1: "" });
+    database.ref("Players/player1").update({ message1: "" });
+   
     
     setTimeout(function(){  
+      isClicked = false;
       $("#idHolder1").text("Choose Image for Paper Scissors Rock");
   
   

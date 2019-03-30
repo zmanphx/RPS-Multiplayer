@@ -10,9 +10,13 @@ body{
 }
 
 
-.jumbotron{ opacity: .65;}
+.jumbotron{ opacity: .75; 
+  border-radius: 15px;
+  height: 285px;
+}
 
-.card{  opacity: 0.75;}
+.card{  opacity: 0.85;
+      border-radius: 15px;}
 
 img {
   color: rgb(63, 53, 53);

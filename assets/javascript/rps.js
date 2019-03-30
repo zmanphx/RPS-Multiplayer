@@ -153,6 +153,16 @@ $("#rockImg").on("click", function() {
 
 });
 
+
+$("#submitChat").on("click", function(){
+   event.preventDefault();
+  
+
+
+
+
+});
+
 database.ref("Players").on("value", function(snapshot) {
   event.preventDefault();
   var response = snapshot.val();

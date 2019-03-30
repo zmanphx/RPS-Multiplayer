@@ -1,18 +1,40 @@
+
+
+
+
 img {
   color: white;
-  width: 150px;
+  width: 200px;
   margin-right: 20px;
 }
 
 
-#pic1 { 
- 
+#idHolder1{color: red;}
 
-  
-}
 
-#pic2 {
-  
-}
 
 .player{ width: 100%;}
+
+
+#rockImg{ height: 150px;    }
+
+img {
+ 
+  padding: 10px 10px;
+  
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color:bisque;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+img:hover {background-color:burlywood}
+
+img:active {
+  background-color: gainsboro;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}

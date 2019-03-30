@@ -17,7 +17,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
     <!-- Firebase Reference -->
-    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+ 
   </head>
 
   <body>
@@ -27,30 +29,43 @@
       <!-- Jumbotron Title -->
       <div class="jumbotron">
         <div class="row">
+
+          <div class ="col-8">
+            <h4 class="player"><span id="idHolder1"></span></h4>
+          </div>
+
+                 <div class="col-4">
+            <h5 class="player">Connections: <span id="connectionCount"> </span></h5>
+          </div>
+
+        </div>
+       <br>
+          
+        <div class="row">
           <div class ="col-4">
-            <h3 class="player"><span id="YourName">My Name  </span></h3>
+            <h3 class="player">Player 1: <span id="P1Name">P1 name </span></h3>
           </div>
 
           <div class ="col-4">
-            <h3 class="player"><span id="Yourscore">My Name  </span></h3>
+            <h3 class="player">Wins:<span id="P1score">P1Score  </span></h3>
           </div>
 
           <div class="col-4">
-            <h3 class="player"><span id="YourWL">My Name  </span></h3>
+            <h3 class="player">Choice:<span id="P1WL">P1 choise </span></h3>
           </div>
         </div>
-
+          <br>
         <div class="row">
           <div class="col-4">
-            <h3 class="player"><span id="YourOp">Your Opponent</span></h3>
+            <h3 class="player">Player 2: <span id="P2Name">P2Name</span></h3>
           </div>
 
           <div class="col-4">
-            <h3 class="player"><span id="YourOpScore">Your Opponent</span></h3>
+            <h3 class="player">Wins: <span id="P2score">P2 Score</span></h3>
           </div>
 
           <div class="col-4">
-            <h3 class="player"><span id="YourOpWL">Your Opponent</span></h3>
+            <h3 class="player"> Choise:<span id="P2WL">P2 choise</span></h3>
           </div>
         </div>
       </div>
@@ -86,20 +101,20 @@
                 </div>
                 <div class="col-md-8">
                   <img
-                    id="pic1"
-                    src="assets/images/bridge.jpg "
+                    id="paperImg"
+                    src="assets/images/torn-2032972_640.png "
                     class="img-fluid mypic"
                   />
 
                   <img
-                    id="pic2"
-                    src="assets/images/traffic.jpg "
+                    id="scissorImg"
+                    src="assets/images/shear-480551_640.jpg "
                     class="img-fluid mypic"
                   />
 
                   <img
-                    id="pic3"
-                    src="assets/images/tunnel.jpg "
+                    id="rockImg"
+                    src="assets/images/rocks-2485461_640.png "
                     class="img-fluid mypic"
                   />
                 </div>
@@ -148,6 +163,6 @@
     </div>
 
     <!-- Script -->
-    <script src="logic.js"></script>
+    <script src="assets/javascript/rps.js"></script>
   </body>
 </html>

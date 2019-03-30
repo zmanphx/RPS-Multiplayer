@@ -14,7 +14,7 @@ var database = firebase.database();
 var connectionsRef = database.ref("/connections");
 var connectedRef = database.ref(".info/connected");
 var whichConnect = 0;
-var isClicked = false; // insures button value only records once.
+var isClick= true;
 //When player connects
 connectedRef.on("value", function(snap) {
   if (snap.val()) {
@@ -78,12 +78,12 @@ $("#submitName").on("click", function() {
 
     if (p1name == "") {
       database.ref("Players/player1").update({ Name: pName });
-
+      isClicked = true;
       $("#P1Name").text(pName);
       playerNum = 1;
       $("#idHolder1").text("You are player 1!");
       database.ref("Players/player2").update({ message1: "" });
-    database.ref("Players/player1").update({ message1: "" });
+      database.ref("Players/player1").update({ message1: "" });
       database.ref("Players/player2").update({ Name: "" });
       database.ref("Players/player2").update({ Win: "0" });
       database.ref("Players/player1").update({ Win: "0" });
@@ -92,13 +92,19 @@ $("#submitName").on("click", function() {
       database.ref("Players/rps_session").update({ game_count: "0" });
       database.ref("Players/rps_session").update({ game_started: "false" });
       database.ref("Players/rps_session").update({ game_ties: "0" });
+      $("img").animate({ opacity: "1.0" });
+      database.ref("Players/player1").update({ isClick: true });
     } else if (p2name == "") {
       database.ref("Players/player2").update({ Name: pName });
-
+      database.ref("Players/player1").update({ isClick: false });
+      database.ref("Players/player2").update({ isClick: false });
+      isClicked = false;
       $("#P2Name").text(pName);
       playerNum = 2;
       $("#idHolder1").text("You are player 2!");
+
       database.ref("Players/rps_session").update({ game_started: "true" });
+      $("img").animate({ opacity: "1.0" });
     }
   });
 });
@@ -111,62 +117,79 @@ database.ref("Players").on("value", function(snapshot) {
   $("#P2Name").text(response.player2.Name);
   $("#P1WL").text(response.player1.message1);
   $("#P2WL").text(response.player2.message1);
+   if (playerNum==1){
+    isClick = response.player1.isClick;
+   }
+   if (playerNum==2){
+    isClick = response.player2.isClick;
+   }
+
 });
+
+
 
 // player chooses one of the p,r,s
 
 $("#paperImg").on("click", function() {
   event.preventDefault();
-  if (isClicked) {
-    return;
-  }
-  isClicked = true;
+  
+   if (isClick){return;}
 
   if (playerNum == 1 || playerNum == 2) {
     if (playerNum == 1) {
+     
+
       database.ref("Players/player1").update({ ClickVal: "p" });
       database.ref("Players/player1").update({ message1: "player 1 clicked" });
+      database.ref("Players/player1").update({ isClick: true });
     } else {
+     
       database.ref("Players/player2").update({ ClickVal: "p" });
       database.ref("Players/player2").update({ message1: "player 2 clicked" });
+      database.ref("Players/player2").update({ isClick: true });
     }
   }
+  $("#paperImg").fadeOut("slow");
 });
 
 $("#scissorImg").on("click", function() {
   event.preventDefault();
-  if (isClicked) {
-    return;
-  }
-  isClicked = true;
-
+    if ( isClick){ return ;}
   if (playerNum == 1 || playerNum == 2) {
     if (playerNum == 1) {
+      
+
       database.ref("Players/player1").update({ ClickVal: "s" });
       database.ref("Players/player1").update({ message1: "player 1 clicked" });
+      database.ref("Players/player1").update({ isClick: true });
     } else {
+      
       database.ref("Players/player2").update({ ClickVal: "s" });
       database.ref("Players/player2").update({ message1: "player 2 clicked" });
+      database.ref("Players/player2").update({ isClick: true });
     }
   }
+
+  $("#scissorImg").fadeOut("slow");
 });
 
 $("#rockImg").on("click", function() {
   event.preventDefault();
-  if (isClicked) {
-    return;
-  }
-  isClicked = true;
-
+    if(isClick){return;}
   if (playerNum == 1 || playerNum == 2) {
     if (playerNum == 1) {
+      
       database.ref("Players/player1").update({ ClickVal: "r" });
       database.ref("Players/player1").update({ message1: "player 1 clicked" });
+      database.ref("Players/player1").update({ isClick: true });
     } else {
+      
       database.ref("Players/player2").update({ ClickVal: "r" });
       database.ref("Players/player2").update({ message1: "player 2 clicked" });
+      database.ref("Players/player2").update({ isClick: true });
     }
   }
+  $("#rockImg").fadeOut("slow");
 });
 
 $("#submitChat").on("click", function() {
@@ -251,14 +274,14 @@ database.ref("Players").on("value", function(snapshot) {
 
     database.ref("Players/player2").update({ message1: "" });
     database.ref("Players/player1").update({ message1: "" });
-   
-    
-    setTimeout(function(){  
+
+    setTimeout(function() {
       isClicked = false;
       $("#idHolder1").text("Choose Image for Paper Scissors Rock");
-  
-  
-  }, 7000);
+      $("img").fadeIn("slow");
+      database.ref("Players/player2").update({ isClick: false });
+      database.ref("Players/player1").update({ isClick: false });
+    }, 5000);
     //******************************************************************** */
   }
 });

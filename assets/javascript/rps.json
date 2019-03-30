@@ -1,9 +1,9 @@
 
 
 {
- "Players": { "player1": { "Name":"", "ClickVal": "", "Win":"0","message1":"","message2":""},
+ "Players": { "player1": { "Name":"", "ClickVal": "", "Win":"0","message1":"","isClick":"true"},
   
-            "player2": { "Name":"", "ClickVal": "", "Win":"0","message1":"","message2":""},
+            "player2": { "Name":"", "ClickVal": "", "Win":"0","message1":"","isClick":"true"},
 
             "rps_session":{ "game_started": "false","game_count": "0", "game_ties": "0", "message1":""}
 

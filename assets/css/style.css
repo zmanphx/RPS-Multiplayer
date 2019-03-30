@@ -1,6 +1,18 @@
 
 
 
+body{
+  background-image: url("../images/marble-2362262_1280.jpg");
+
+  height: 100vh;
+
+
+}
+
+
+.jumbotron{ opacity: .65;}
+
+.card{  opacity: 0.75;}
 
 img {
   color: white;
@@ -8,8 +20,10 @@ img {
   margin-right: 20px;
 }
 
+  #P2WL,#P1WL,#idHolder1{ color:rgb(255, 47, 57); font-size: 30px;}
 
-#idHolder1{color: red;}
+
+
 
 
 

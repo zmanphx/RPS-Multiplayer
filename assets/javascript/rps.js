@@ -70,11 +70,7 @@ connectionsRef.on("value", function(snap) {
 
 chatRef.limitToLast(1).on('child_added', function(snapshot) {
   var response = snapshot.val();
-  // all records after the last continue to invoke this function
-  console.log(response);
-  // get the last inserted key
-  
-   var chat = $("<p>").text(response);
+  var chat = $("<p>").text(response);
     
    chat.appendTo( $("#playerChat"));
    $("#playerChat").scrollTop($("#playerChat")[0].scrollHeight);

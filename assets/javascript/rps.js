@@ -14,6 +14,7 @@ var database = firebase.database();
 var connectionsRef = database.ref("/connections");
 var connectedRef = database.ref(".info/connected");
 var chatRef  = firebase.database().ref().child("chat");
+  chatRef.remove();
 var whichConnect = 0;
 var isClick= true;
 var isSubmit = false;
@@ -47,6 +48,8 @@ connectionsRef.on("value", function(snap) {
     database.ref("Players/rps_session").update({ game_count: "0" });
     database.ref("Players/rps_session").update({ game_started: "false" });
     database.ref("Players/rps_session").update({ game_ties: "0" });
+    database.ref("chat").update("");
+  
     $("#idHolder1").text(
       "Welcome to Paper-Scissors-Rock ! Submit your name to play."
     );

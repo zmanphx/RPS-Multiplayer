@@ -73,21 +73,32 @@ chatRef.limitToLast(1).on('child_added', function(snapshot) {
   
    var chat = $("<p>").text(response);
     
-
    chat.appendTo( $("#playerChat"));
    $("#playerChat").scrollTop($("#playerChat")[0].scrollHeight);
 
 });
 
 
+//*********************************************Current Time **************************************************** */
+   function getTime(){
+   var newDate = new Date();
+   var time = newDate.getHours() + ":" + newDate.getMinutes() +":" + newDate.getSeconds() + "   "; 
+
+    return time;
+  
+   }
+
+
 
 //**************************************submit Chat************************************************** */
 $("#submitChat").on("click", function(){
-
+  
   var pName = $("#playerName").val().trim();
   var chatText= $("#chatEntry").val().trim();
  // var chatkey=   chatRef.push(pName + "-- " + chatText).key;
-  chatRef.push(pName + "-- " + chatText).key;
+   mytext =getTime() + "*** " +pName + "---" + chatText
+ 
+   chatRef.push( mytext).key;
   $("#chatEntry").val('');
 
 });

@@ -13,8 +13,11 @@ var database = firebase.database();
 // var databaseRef = firebase.database.ref();
 var connectionsRef = database.ref("/connections");
 var connectedRef = database.ref(".info/connected");
+var chatRef  = firebase.database().ref().child("chat");
 var whichConnect = 0;
 var isClick= true;
+var isSubmit = false;
+var playerNum = 0;
 //When player connects
 connectedRef.on("value", function(snap) {
   if (snap.val()) {
@@ -61,9 +64,49 @@ connectionsRef.on("value", function(snap) {
     playerNum = snap.numChildren();
   }
 });
+
+chatRef.limitToLast(1).on('child_added', function(snapshot) {
+  var response = snapshot.val();
+  // all records after the last continue to invoke this function
+  console.log(response);
+  // get the last inserted key
+  
+   var chat = $("<p>").text(response);
+    
+
+   chat.appendTo( $("#playerChat"));
+   $("#playerChat").scrollTop($("#playerChat")[0].scrollHeight);
+
+});
+
+
+
+//**************************************submit Chat************************************************** */
+$("#submitChat").on("click", function(){
+
+  var pName = $("#playerName").val().trim();
+  var chatText= $("#chatEntry").val().trim();
+ // var chatkey=   chatRef.push(pName + "-- " + chatText).key;
+  chatRef.push(pName + "-- " + chatText).key;
+  $("#chatEntry").val('');
+
+});
+
+
+
+
+
 //**************************************submit name************************************************** */
+
 $("#submitName").on("click", function() {
+ 
+ 
   event.preventDefault();
+ 
+ if ( isSubmit) {return;}
+
+ isSubmit = true;
+ 
   var pName = $("#playerName")
     .val()
     .trim();

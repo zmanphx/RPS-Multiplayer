@@ -30,7 +30,13 @@ img {
 
 
 
-
+  #playerChat {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 175px;
+   
+    
+}
 
 
 .player{ width: 100%;}

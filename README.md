@@ -1,5 +1,5 @@
 # RPS-Multiplayer
-RPS  (Rock paper Scizzors) multiplayer game using  Firebase database 
+RPS  (Rock paper Scissors) multiplayer game using  Firebase database 
 
 I am using  jquery animiation on the image buttons. When the player enters their name the 3 images appear.
 When the player picks one of the  button images as their choice the button dissappears. 
